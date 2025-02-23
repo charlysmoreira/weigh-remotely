@@ -22,7 +22,7 @@ model User {
 
 model Weigh {
   id       Int      @id @default(autoincrement())
-  mac      String   @unique
+  mac      String
   value    Decimal  @db.Decimal(5, 2)
   createAt DateTime @default(now())
 }

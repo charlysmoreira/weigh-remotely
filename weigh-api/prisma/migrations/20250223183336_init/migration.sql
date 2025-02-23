@@ -17,6 +17,3 @@ CREATE TABLE "Weigh" (
 
     CONSTRAINT "Weigh_pkey" PRIMARY KEY ("id")
 );
-
--- CreateIndex
-CREATE UNIQUE INDEX "Weigh_mac_key" ON "Weigh"("mac");
