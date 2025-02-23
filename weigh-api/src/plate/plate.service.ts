@@ -14,6 +14,14 @@ export class PlateService {
     return await this.prismaService.plate.findMany();
   }
 
+  async findAllActive() {
+    return await this.prismaService.plate.findMany({
+      where: {
+        active: true,
+      },
+    });
+  }
+
   async findOne(id: number) {
     return await this.prismaService.plate.findUnique({
       where: { id: Number(id) },

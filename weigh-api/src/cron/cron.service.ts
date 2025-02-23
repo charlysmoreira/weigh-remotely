@@ -17,7 +17,7 @@ export class CronService {
   @Cron(CronExpression.EVERY_MINUTE)
   async handleSensorData() {
     try {
-      const plates = await this.plateService.findAll();
+      const plates = await this.plateService.findAllActive();
       const macAddresses = plates.map((plate) => plate.mac);
 
       this.logger.log(`Solicitando dados de: ${macAddresses.length} placas`);
