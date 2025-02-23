@@ -33,6 +33,7 @@ export class PlateService {
       where: { id: Number(id) },
       data: {
         mac: plate.mac,
+        active: plate.active,
         userId: plate.userId,
       },
     });
