@@ -29,19 +29,23 @@ client.on('connect', () => {
 // Captura mensagens do ESP8266
 client.on('message', (topic, message) => {
     if (topic === MQTT_SUBSCRIBE_SENSOR) {
-      value = message.toString();
+        value = message.toString();
         console.log(`Sensor recebida: ${value}`);
     }
     if (topic === MQTT_SUBSCRIBE_INFO) {
-        infoESP = JSON.parse(message.toString());
+        const data = JSON.parse(message.toString());
+        if (data.mac) {
+            infoESP[data.mac] = data;
+        }
         console.log("Informações recebidas:", infoESP);
     }
 });
 
 // Rota para solicitar o valor do sensor
 app.get('/sensor', (req, res) => {
+    const mac = req.query.mac;
     console.log('Solicitando valor do sensor...');
-    client.publish(MQTT_REQUEST_SENSOR, 'GET');
+    client.publish(MQTT_REQUEST_SENSOR, mac);
 
     setTimeout(() => {
         res.json({ value: value });
@@ -51,7 +55,8 @@ app.get('/sensor', (req, res) => {
 // Rota para solicitar informações do ESP8266
 app.get('/esp-info', (req, res) => {
     console.log('Solicitando informações do ESP8266...');
-    client.publish(MQTT_REQUEST_INFO, 'GET');
+    infoESP = {};
+    client.publish(MQTT_REQUEST_INFO);
 
     setTimeout(() => {
         res.json(infoESP);
