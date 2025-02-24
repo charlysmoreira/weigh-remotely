@@ -4,7 +4,7 @@ import { PlateService } from './plate.service';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Module({
-  controllers: [PlateController],
-  providers: [PlateService, PrismaService],
+    controllers: [PlateController],
+    providers: [PlateService, PrismaService],
 })
 export class PlateModule {}

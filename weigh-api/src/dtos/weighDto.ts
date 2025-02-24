@@ -1,5 +1,5 @@
 export interface WeighDto {
-  mac: string;
-  value: number;
-  createAt: Date;
+    mac: string;
+    value: number;
+    createAt: Date;
 }

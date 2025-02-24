@@ -9,14 +9,14 @@ import { PlateService } from './plate/plate.service';
 import { PlateModule } from './plate/plate.module';
 
 @Module({
-  imports: [
-    ScheduleModule.forRoot(),
-    UserModule,
-    WeighModule,
-    MqttModule,
-    PlateModule,
-  ],
-  controllers: [],
-  providers: [PrismaService, CronService, PlateService],
+    imports: [
+        ScheduleModule.forRoot(),
+        UserModule,
+        WeighModule,
+        MqttModule,
+        PlateModule,
+    ],
+    controllers: [],
+    providers: [PrismaService, CronService, PlateService],
 })
 export class AppModule {}

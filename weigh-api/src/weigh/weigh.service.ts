@@ -4,13 +4,13 @@ import { PrismaService } from './../prisma/prisma.service';
 
 @Injectable()
 export class WeighService {
-  constructor(private prismaService: PrismaService) {}
+    constructor(private prismaService: PrismaService) {}
 
-  async create(weigh: WeighDto) {
-    return await this.prismaService.weigh.create({ data: weigh });
-  }
+    async create(weigh: WeighDto) {
+        return await this.prismaService.weigh.create({ data: weigh });
+    }
 
-  async findAll() {
-    return await this.prismaService.weigh.findMany();
-  }
+    async findAll() {
+        return await this.prismaService.weigh.findMany();
+    }
 }
